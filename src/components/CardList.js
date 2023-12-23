@@ -135,9 +135,7 @@ const ListPost = () => {
           const selectedImage = selectSingleImage(images);
           return (
             <div key={post.id} className='bg-white shadow-md rounded-md p-4'>
-              {selectedImage && (
-                <img src={selectedImage} alt={`Image from post ${post.id}`} />
-              )}
+              {selectedImage && <img src={selectedImage} alt='alt' />}
 
               <p className='text-gray-500 mt-5 mb-5'>
                 {formatDate(post.published_at)}
