@@ -32,22 +32,6 @@ const ListPost = () => {
     fetchData();
   }, [currentPage, pageSize, sortBy]);
 
-  const extractImagesFromHTML = (html) => {
-    const tempElement = document.createElement('div');
-    tempElement.innerHTML = html;
-    const images = Array.from(tempElement.getElementsByTagName('img')).map(
-      (img) => img.src
-    );
-    return images;
-  };
-
-  const selectSingleImage = (images) => {
-    if (images && images.length > 0) {
-      return images[0];
-    }
-    return null;
-  };
-
   const formatDate = (dateString) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     const formattedDate = new Date(dateString).toLocaleDateString(
@@ -131,11 +115,9 @@ const ListPost = () => {
 
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
         {posts.map((post) => {
-          const images = extractImagesFromHTML(post.content);
-          const selectedImage = selectSingleImage(images);
           return (
             <div key={post.id} className='bg-white shadow-md rounded-md p-4'>
-              {selectedImage && <img src={selectedImage} alt='alt' />}
+              <img src={post.medium_image[0].url} alt='' />
 
               <p className='text-gray-500 mt-5 mb-5'>
                 {formatDate(post.published_at)}
