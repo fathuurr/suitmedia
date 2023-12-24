@@ -70,11 +70,11 @@ const Navbar = () => {
 
             <li
               className={`mr-6 cursor-pointer ${
-                activeMenu === 'Services'
+                activeMenu === 'Careers'
                   ? 'text-white border-b-2'
                   : 'text-white'
               }`}
-              onClick={() => setActiveMenu('Services')}>
+              onClick={() => setActiveMenu('Careers')}>
               Careers
             </li>
             <li
